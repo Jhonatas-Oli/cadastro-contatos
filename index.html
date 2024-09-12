@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Contatos</title>
+    <style>
+        /* Estilos Globais */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ebe8e3;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        /* Estilo do container principal */
+        .container {
+            background-color: #1c2149;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px #948765;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Estilo do formulário */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #948765;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #948765;
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #948765;
+            text-align: left;
+        }
+
+        th {
+            background-color: #948765;
+            color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: #948765;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cadastro de Contatos</h1>
+
+        <form id="contactForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" placeholder="Digite o nome" required>
+            
+            <label for="phone">Telefone:</label>
+            <input type="text" id="phone" placeholder="Digite o telefone" required>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <h2>Lista de Contatos</h2>
+        <table id="contactTable">
+            <thead>
+                <tr>
+                    <th>Nome:</th>
+                    <th>Telefone:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas serão inseridas aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const tableBody = document.querySelector('#contactTable tbody');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            // Cria uma nova linha e células para nome e telefone
+            const newRow = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            const phoneCell = document.createElement('td');
+
+            nameCell.textContent = name;
+            phoneCell.textContent = phone;
+
+            newRow.appendChild(nameCell);
+            newRow.appendChild(phoneCell);
+
+            // Adiciona a nova linha na tabela
+            tableBody.appendChild(newRow);
+
+            // Limpa os campos do formulário
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
